@@ -29,8 +29,8 @@ var capHill = {
 }
 
 var alki = {
-    minCus: ,
-    maxCus: ,
-    avgSale: ,
+    minCus: 2,
+    maxCus: 16,
+    avgSale: 4.6,
     locName: 'Alki'
 }
