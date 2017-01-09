@@ -1,7 +1,6 @@
 'use strict';
 
 //global variables
-var customers;
 
 var pike = {
     minCus: 23,
@@ -10,6 +9,7 @@ var pike = {
     locName: '1st and Pike',
     dailyTotals: [],
 
+    //Generate random number of customers based on minimum and maximum numbers
     cusPerHour: function() {
         var min = Math.ceil(this.minCus);
         var max = Math.floor(this.maxCus)
@@ -18,11 +18,12 @@ var pike = {
         return result;
     },
 
+    //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
         for (i = 0; i < 13; i++) {
-            customers = this.cusPerHour();
-            perHour = customers * this.avgSale;
+            var customers = this.cusPerHour();
+            var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
             console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 8) + ':00.')
         }
@@ -30,6 +31,7 @@ var pike = {
         return totals;
     },
 
+    //adds the hourly totals from the salesHourly method to give a daily total number of cookies sold
     dailyTotal: function() {
         return this.dailyTotals.reduce(function(a,b) {
             return a + b;
