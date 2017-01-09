@@ -8,6 +8,7 @@ var pike = {
     maxCus: 65,
     avgSale: 6.3,
     locName: '1st and Pike',
+    dailyTotals: [],
 
     cusPerHour: function() {
         var min = Math.ceil(this.minCus);
@@ -18,11 +19,21 @@ var pike = {
     },
 
     salesHourly: function() {
+        var totals = [];
         for (i = 0; i < 13; i++) {
             customers = this.cusPerHour();
             perHour = customers * this.avgSale;
+            totals.push(Math.floor(perHour));
             console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 8) + ':00.')
         }
+        this.dailyTotals = totals;
+        return totals;
+    },
+
+    dailyTotal: function() {
+        return this.dailyTotals.reduce(function(a,b) {
+            return a + b;
+        }, 0);
     }
 }
 
