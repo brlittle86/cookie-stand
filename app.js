@@ -1,10 +1,29 @@
 'use strict';
 
+//global variables
+var customers;
+
 var pike = {
     minCus: 23,
     maxCus: 65,
     avgSale: 6.3,
-    locName: '1st and Pike'
+    locName: '1st and Pike',
+
+    cusPerHour: function() {
+        var min = Math.ceil(this.minCus);
+        var max = Math.floor(this.maxCus)
+        var result = Math.floor(Math.random() * (max - min + 1) + min);
+        console.log(result);
+        return result;
+    },
+
+    salesHourly: function() {
+        for (i = 0; i < 13; i++) {
+            customers = this.cusPerHour();
+            perHour = customers * this.avgSale;
+            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 8) + ':00.')
+        }
+    }
 }
 
 var seaTac = {
