@@ -2,6 +2,7 @@
 
 //Vendor location objects
 var pike = {
+    storeId: 'first-pike',
     minCus: 23,
     maxCus: 65,
     avgSale: 6.3,
@@ -20,7 +21,7 @@ var pike = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (i = 0; i < 13; i++) {
+        for (var i = 0; i < 13; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
@@ -39,6 +40,7 @@ var pike = {
 }
 
 var seaTac = {
+    storeId: 'airport',
     minCus: 3,
     maxCus: 24,
     avgSale: 1.2,
@@ -57,7 +59,7 @@ var seaTac = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (i = 0; i < 13; i++) {
+        for (var i = 0; i < 13; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
@@ -76,6 +78,7 @@ var seaTac = {
 }
 
 var seaCent = {
+    storeId: 'center',
     minCus: 11,
     maxCus: 38,
     avgSale: 3.7,
@@ -94,7 +97,7 @@ var seaCent = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (i = 0; i < 13; i++) {
+        for (var i = 0; i < 13; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
@@ -113,6 +116,7 @@ var seaCent = {
 }
 
 var capHill = {
+    storeId: 'hill',
     minCus: 20,
     maxCus: 38,
     avgSale: 2.3,
@@ -131,7 +135,7 @@ var capHill = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (i = 0; i < 13; i++) {
+        for (var i = 0; i < 13; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
@@ -150,6 +154,7 @@ var capHill = {
 }
 
 var alki = {
+    storeId: 'alki',
     minCus: 2,
     maxCus: 16,
     avgSale: 4.6,
@@ -168,7 +173,7 @@ var alki = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (i = 0; i < 13; i++) {
+        for (var i = 0; i < 13; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
@@ -185,3 +190,18 @@ var alki = {
         }, 0);
     }
 }
+
+pike.salesHourly();
+//List cookie sales
+var fillPage = function(store) {
+    var salesList = document.getElementById(store.storeId);
+
+    for (var i = 0; i < store.salesHourly.length; i++) {
+        var listEl = document.createElement('li');
+        listEl.textContent = store.salesHourly[i] + ' cookies sold during the  ' + (i + 8) + ':00 hour.';
+        salesList.appendChild(listEl);
+    }
+}
+
+
+fillPage(pike);
