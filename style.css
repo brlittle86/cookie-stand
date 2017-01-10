@@ -8,15 +8,21 @@ header {
     padding: 5%;
 }
 
+body {
+    background-color: #A3320B;
+}
+
 .highlight {
     font-family: 'Indie Flower', cursive;
-    color: dodgerblue;
+    color: #D5E68D;
 }
 
 .data {
     font: Verdana;
+    color: #6B0504;
 }
 
 .text {
     font: Georgia;
+    color: #241023;
 }
