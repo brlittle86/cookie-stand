@@ -1,0 +1,21 @@
+header {
+    background-image: url("assets/salmon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35%;
+    text-align: center;
+    margin: auto;
+    padding: 5%;
+}
+
+.highlight {
+    font-family: 'Indie Flower', cursive;
+}
+
+.data {
+    font: Verdana;
+}
+
+.text {
+    font: Georgia;
+}
