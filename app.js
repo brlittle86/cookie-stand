@@ -207,6 +207,9 @@ var fillPage = function(store) {
         listEl.textContent = store.dailyTotals[i] + ' cookies sold during the  ' + (i + 6) + ':00 hour.';
         salesList.appendChild(listEl);
     }
+    var listEl = document.createElement('li');
+    listEl.textContent = store.dailyTotal() + ' total cookies sold.';
+    salesList.appendChild(listEl);
 }
 
 //execute function on each store to actually print the lists onto the webpage
