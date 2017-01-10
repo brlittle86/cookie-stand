@@ -21,11 +21,11 @@ var pike = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (var i = 0; i < 13; i++) {
+        for (var i = 0; i < 15; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
-            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 8) + ':00.')
+            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.')
         }
         this.dailyTotals = totals;
         return totals;
@@ -59,11 +59,11 @@ var seaTac = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (var i = 0; i < 13; i++) {
+        for (var i = 0; i < 15; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
-            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 8) + ':00.')
+            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.')
         }
         this.dailyTotals = totals;
         return totals;
@@ -97,11 +97,11 @@ var seaCent = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (var i = 0; i < 13; i++) {
+        for (var i = 0; i < 15; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
-            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 8) + ':00.')
+            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.')
         }
         this.dailyTotals = totals;
         return totals;
@@ -135,11 +135,11 @@ var capHill = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (var i = 0; i < 13; i++) {
+        for (var i = 0; i < 15; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
-            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 8) + ':00.')
+            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.')
         }
         this.dailyTotals = totals;
         return totals;
@@ -173,11 +173,11 @@ var alki = {
     //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
     salesHourly: function() {
         var totals = [];
-        for (var i = 0; i < 13; i++) {
+        for (var i = 0; i < 15; i++) {
             var customers = this.cusPerHour();
             var perHour = customers * this.avgSale;
             totals.push(Math.floor(perHour));
-            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 8) + ':00.')
+            console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.')
         }
         this.dailyTotals = totals;
         return totals;
@@ -191,17 +191,27 @@ var alki = {
     }
 }
 
+//generate the random daily values for each store
 pike.salesHourly();
-//List cookie sales
+seaTac.salesHourly();
+seaCent.salesHourly();
+capHill.salesHourly();
+alki.salesHourly();
+
+//List cookie sales on webpage
 var fillPage = function(store) {
     var salesList = document.getElementById(store.storeId);
 
-    for (var i = 0; i < store.salesHourly.length; i++) {
+    for (var i = 0; i < store.dailyTotals.length; i++) {
         var listEl = document.createElement('li');
-        listEl.textContent = store.salesHourly[i] + ' cookies sold during the  ' + (i + 8) + ':00 hour.';
+        listEl.textContent = store.dailyTotals[i] + ' cookies sold during the  ' + (i + 6) + ':00 hour.';
         salesList.appendChild(listEl);
     }
 }
 
-
+//execute function on each store to actually print the lists onto the webpage
 fillPage(pike);
+fillPage(seaTac);
+fillPage(seaCent);
+fillPage(capHill);
+fillPage(alki);
