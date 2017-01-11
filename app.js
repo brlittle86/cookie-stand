@@ -68,6 +68,9 @@ for (var i = 0; i < 15; i++) {
   times.textContent = (i + 6) + ':00';
   tableEl.appendChild(times);
 }
+var cumulativeTotals = document.createElement('th');
+cumulativeTotals.textContent = 'Daily Totals';
+tableEl.appendChild(cumulativeTotals);
 
 //prints the hourly values and totals to a table in HTML
 for(var i = 0; i < totals.length; i++) {
