@@ -8,10 +8,27 @@
   </head>
   <body>
     <main>
-      <table id="sales-table">
-
+    <table id="sales-table">
       </table>
-    </main>
-    <script src="app.js"></script>
-  </body>
+        <section id="form-section">
+          <form id="first-form">
+            <fieldset>
+              <legend>New Store Data</legend>
+              <label for="loc-name">Name:</label>
+              <input name="loc-name" id="name-input" type="text"/>
+              <label for="store-id">ID:</label>
+              <input name="store-id" id="id-input" type="text"/>
+              <label for="min-cus">Minimum Customer:</label>
+              <input name="min-cus" id="min-input" type="text"/>
+              <label for="max-cus">Maximum Cutomer:</label>
+              <input name="max-cus" id="max-input" type="text"/>
+              <label for="avg-sale">Average Sale</label>
+              <input name="avg-sale" id="avg-input" type="text"/>
+              <button type="submit" id="submit-button">SUBMIT</button>
+            </fieldset>
+          </form>
+        </section>
+     </main>
+  <script src="app.js"></script>
+</body>
 </html>
