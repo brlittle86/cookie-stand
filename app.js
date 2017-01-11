@@ -81,6 +81,5 @@ for(var i = 0; i < totals.length; i++) {
     return a + b;
   }, 0);
   rowEl.appendChild(dataEl);
-  console.log(dataEl);
   tableEl.appendChild(rowEl);
 }
