@@ -17,18 +17,20 @@ body {
   color: #D5E68D;
 }
 
-table, th, td {
+table, th, td, tr {
   background-color: #D5E68D;
   border: 1px solid black;
   border-collapse: collapse;
-  padding: 5px;
   font: Verdana;
   color: #6B0504;
 }
 
 table {
-  width: 100%;
+  width: 60%;
 }
+
+tr:hover {background-color: #f5f5f5}
+td:hover {background-color: #f5f5f5}
 
 .text {
   font: Georgia;
