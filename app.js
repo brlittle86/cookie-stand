@@ -87,10 +87,17 @@ for(var i = 0; i < totals.length; i++) {
 //prints footers with hourly totals and grand totals
 for (var i = 0; i < 1; i++) {
   var rowEl = document.createElement('tr');
+  var hourlyTotals = [];
   for (var j = 0; j < totals[i].length; j++) {
     var dataEl = document.createElement('td');
-    dataEl.textContent = totals[0][j] + totals[1][j] + totals[2][j] + totals[3][j] + totals[4][j];
+    hourlyTotals.push(totals[0][j] + totals[1][j] + totals[2][j] + totals[3][j] + totals[4][j]);
+    dataEl.textContent = hourlyTotals[j];
     rowEl.appendChild(dataEl);
   }
+  var dataEl = document.createElement('td');
+  dataEl.textContent = hourlyTotals.reduce(function(a,b) {
+    return a + b;
+  }, 0);
+  rowEl.appendChild(dataEl);
   tableEl.appendChild(rowEl);
 }
