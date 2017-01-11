@@ -83,3 +83,14 @@ for(var i = 0; i < totals.length; i++) {
   rowEl.appendChild(dataEl);
   tableEl.appendChild(rowEl);
 }
+
+//prints footers with hourly totals and grand totals
+for (var i = 0; i < 1; i++) {
+  var rowEl = document.createElement('tr');
+  for (var j = 0; j < totals[i].length; j++) {
+    var dataEl = document.createElement('td');
+    dataEl.textContent = totals[0][j] + totals[1][j] + totals[2][j] + totals[3][j] + totals[4][j];
+    rowEl.appendChild(dataEl);
+  }
+  tableEl.appendChild(rowEl);
+}
