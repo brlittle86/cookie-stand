@@ -52,9 +52,17 @@ var alki = new Store('Alki', 'alki', 2, 16, 4.6);
 var totals = [pike.salesHourly(), seaTac.salesHourly(), seaCent.salesHourly(), capHill.salesHourly(), alki.salesHourly()];
 console.log(totals);
 
-//List cookie sales on webpage
+//List cookie sales on webpage as a table
 var tableEl = document.getElementById('sales-table');
 
+//generate headers for the table
+for (var i = 0; i < 15; i++) {
+  var times = document.createElement('th');
+  times.textContent = (i + 6) + ':00';
+  tableEl.appendChild(times);
+}
+
+//prints the hourly values and totals to a table in HTML
 for(var i = 0; i < totals.length; i++) {
   var rowData = totals[i];
 
