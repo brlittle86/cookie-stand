@@ -1,220 +1,116 @@
 'use strict';
 
-//Vendor location objects
-var pike = {
-  storeId: 'first-pike',
-  minCus: 23,
-  maxCus: 65,
-  avgSale: 6.3,
-  locName: '1st and Pike',
-  dailyTotals: [],
+//Constructor for the Store objects
+function Store(locName, storeId, minCus, maxCus, avgSale) {
+  this.locName = locName;
+  this.storeId = storeId;
+  this.minCus = minCus;
+  this.maxCus = maxCus;
+  this.avgSale = avgSale;
 
-  //Generate random number of customers based on minimum and maximum numbers
-  cusPerHour: function() {
-    var min = Math.ceil(this.minCus);
-    var max = Math.floor(this.maxCus);
-    var result = Math.floor(Math.random() * (max - min + 1) + min);
-    console.log(result);
-    return result;
-  },
-
-    //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
-  salesHourly: function() {
-    var totals = [];
-    for (var i = 0; i < 15; i++) {
-      var customers = this.cusPerHour();
-      var perHour = customers * this.avgSale;
-      totals.push(Math.floor(perHour));
-      console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.');
-    }
-    this.dailyTotals = totals;
-    return totals;
-  },
-
-    //adds the hourly totals from the salesHourly method to give a daily total number of cookies sold
-  dailyTotal: function() {
-    return this.dailyTotals.reduce(function(a,b) {
-      return a + b;
-    }, 0);
-  }
+  var dailyTotals = [];
+  this.dailyTotals = dailyTotals;
 };
 
-var seaTac = {
-  storeId: 'airport',
-  minCus: 3,
-  maxCus: 24,
-  avgSale: 1.2,
-  locName: 'SeaTac Airport',
-  dailyTotals: [],
-
-  //Generate random number of customers based on minimum and maximum numbers
-  cusPerHour: function() {
-    var min = Math.ceil(this.minCus);
-    var max = Math.floor(this.maxCus);
-    var result = Math.floor(Math.random() * (max - min + 1) + min);
-    console.log(result);
-    return result;
-  },
-
-  //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
-  salesHourly: function() {
-    var totals = [];
-    for (var i = 0; i < 15; i++) {
-      var customers = this.cusPerHour();
-      var perHour = customers * this.avgSale;
-      totals.push(Math.floor(perHour));
-      console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.');
-    }
-    this.dailyTotals = totals;
-    return totals;
-  },
-
-    //adds the hourly totals from the salesHourly method to give a daily total number of cookies sold
-  dailyTotal: function() {
-    return this.dailyTotals.reduce(function(a,b) {
-      return a + b;
-    }, 0);
-  }
+//Generate random number of customers based on minimum and maximum numbers
+Store.prototype.cusPerHour = function() {
+  var min = Math.ceil(this.minCus);
+  var max = Math.floor(this.maxCus);
+  var result = Math.floor(Math.random() * (max - min + 1) + min);
+  console.log(result);
+  return result;
 };
 
-var seaCent = {
-  storeId: 'center',
-  minCus: 11,
-  maxCus: 38,
-  avgSale: 3.7,
-  locName: 'Seattle Center',
-  dailyTotals: [],
-
-  //Generate random number of customers based on minimum and maximum numbers
-  cusPerHour: function() {
-    var min = Math.ceil(this.minCus);
-    var max = Math.floor(this.maxCus);
-    var result = Math.floor(Math.random() * (max - min + 1) + min);
-    console.log(result);
-    return result;
-  },
-
-  //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
-  salesHourly: function() {
-    var totals = [];
-    for (var i = 0; i < 15; i++) {
-      var customers = this.cusPerHour();
-      var perHour = customers * this.avgSale;
-      totals.push(Math.floor(perHour));
-      console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.');
-    }
-    this.dailyTotals = totals;
-    return totals;
-  },
-
-    //adds the hourly totals from the salesHourly method to give a daily total number of cookies sold
-  dailyTotal: function() {
-    return this.dailyTotals.reduce(function(a,b) {
-      return a + b;
-    }, 0);
+//calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
+Store.prototype.salesHourly = function() {
+  var totals = [];
+  for (var i = 0; i < 15; i++) {
+    var customers = this.cusPerHour();
+    var perHour = customers * this.avgSale;
+    totals.push(Math.floor(perHour));
+    console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.');
   }
+  this.dailyTotals = totals;
+  return totals;
 };
 
-var capHill = {
-  storeId: 'hill',
-  minCus: 20,
-  maxCus: 38,
-  avgSale: 2.3,
-  locName: 'Capitol Hill',
-  dailyTotals: [],
-
-  //Generate random number of customers based on minimum and maximum numbers
-  cusPerHour: function() {
-    var min = Math.ceil(this.minCus);
-    var max = Math.floor(this.maxCus);
-    var result = Math.floor(Math.random() * (max - min + 1) + min);
-    console.log(result);
-    return result;
-  },
-
-    //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
-  salesHourly: function() {
-    var totals = [];
-    for (var i = 0; i < 15; i++) {
-      var customers = this.cusPerHour();
-      var perHour = customers * this.avgSale;
-      totals.push(Math.floor(perHour));
-      console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.');
-    }
-    this.dailyTotals = totals;
-    return totals;
-  },
-
-    //adds the hourly totals from the salesHourly method to give a daily total number of cookies sold
-  dailyTotal: function() {
-    return this.dailyTotals.reduce(function(a,b) {
-      return a + b;
-    }, 0);
-  }
+//adds the hourly totals from the salesHourly method to give a daily total number of cookies sold
+Store.prototype.dailyTotal = function() {
+  return this.dailyTotals.reduce(function(a,b) {
+    return a + b;
+  }, 0);
 };
 
-var alki = {
-  storeId: 'alki',
-  minCus: 2,
-  maxCus: 16,
-  avgSale: 4.6,
-  locName: 'Alki',
-  dailyTotals: [],
+//Create Store objects for each store
+var pike = new Store('1st and Pike', 'first-pike', 23, 65, 6.3);
+var seaTac = new Store('SeaTac Airport', 'airport', 3, 24, 1.2);
+var seaCent = new Store('Seattle Center', 'center', 11, 38, 3.7);
+var capHill = new Store('Capitol Hill', 'hill', 20, 38, 2.3);
+var alki = new Store('Alki', 'alki', 2, 16, 4.6);
 
-  //Generate random number of customers based on minimum and maximum numbers
-  cusPerHour: function() {
-    var min = Math.ceil(this.minCus);
-    var max = Math.floor(this.maxCus);
-    var result = Math.floor(Math.random() * (max - min + 1) + min);
-    console.log(result);
-    return result;
-  },
+//generate the random daily values for each store and put them into a nested array
+var totals = [pike.salesHourly(), seaTac.salesHourly(), seaCent.salesHourly(), capHill.salesHourly(), alki.salesHourly()];
+console.log(totals);
 
-  //calculate number of cookies sold per hour, based on random number of customers and average number sold, then store the totals in an array property of the object
-  salesHourly: function() {
-    var totals = [];
-    for (var i = 0; i < 15; i++) {
-      var customers = this.cusPerHour();
-      var perHour = customers * this.avgSale;
-      totals.push(Math.floor(perHour));
-      console.log(Math.floor(perHour) + ' cookies sold at ' + (i + 6) + ':00.');
-    }
-    this.dailyTotals = totals;
-    return totals;
-  },
+//variable containing store names for table
+var storeNames = [pike.locName, seaTac.locName, seaCent.locName, capHill.locName, alki.locName]
 
-  //adds the hourly totals from the salesHourly method to give a daily total number of cookies sold
-  dailyTotal: function() {
-    return this.dailyTotals.reduce(function(a,b) {
-      return a + b;
-    }, 0);
+//List cookie sales on webpage as a table
+var tableEl = document.getElementById('sales-table');
+
+//add blank tile to the upperleft corner of the table
+var nameEl = document.createElement('th')
+tableEl.appendChild(nameEl);
+
+//generate headers for the table
+for (var i = 0; i < 15; i++) {
+  var times = document.createElement('th');
+  times.textContent = (i + 6) + ':00';
+  tableEl.appendChild(times);
+}
+var cumulativeTotals = document.createElement('th');
+cumulativeTotals.textContent = 'Daily Totals';
+tableEl.appendChild(cumulativeTotals);
+
+//prints the hourly values and totals to a table in HTML
+for(var i = 0; i < totals.length; i++) {
+  var rowData = totals[i];
+
+  var rowEl = document.createElement('tr');
+  rowEl.textContent = storeNames[i];
+  tableEl.appendChild(rowEl);
+
+  for(var j = 0; j < rowData.length; j++) {
+    var content = rowData[j];
+
+    var dataEl = document.createElement('td');
+    dataEl.textContent = content;
+    rowEl.appendChild(dataEl);
   }
-};
 
-//generate the random daily values for each store
-pike.salesHourly();
-seaTac.salesHourly();
-seaCent.salesHourly();
-capHill.salesHourly();
-alki.salesHourly();
+  var dataEl = document.createElement('td');
+  dataEl.textContent = totals[i].reduce(function(a,b) {
+    return a + b;
+  }, 0);
+  rowEl.appendChild(dataEl);
+  tableEl.appendChild(rowEl);
+}
 
-//List cookie sales on webpage
-var fillPage = function(store) {
-  var salesList = document.getElementById(store.storeId);
-
-  for (var i = 0; i < store.dailyTotals.length; i++) {
-    var listEl = document.createElement('li');
-    listEl.textContent = store.dailyTotals[i] + ' cookies sold during the  ' + (i + 6) + ':00 hour.';
-    salesList.appendChild(listEl);
+//prints footers with hourly totals and grand totals
+for (var i = 0; i < 1; i++) {
+  var rowEl = document.createElement('tr');
+  rowEl.textContent = 'Totals';
+  var hourlyTotals = [];
+  for (var j = 0; j < totals[i].length; j++) {
+    var dataEl = document.createElement('td');
+    hourlyTotals.push(totals[0][j] + totals[1][j] + totals[2][j] + totals[3][j] + totals[4][j]);
+    dataEl.textContent = hourlyTotals[j];
+    rowEl.appendChild(dataEl);
   }
-  var listEl = document.createElement('li');
-  listEl.textContent = store.dailyTotal() + ' total cookies sold.';
-  salesList.appendChild(listEl);
-};
-
-//execute function on each store to actually print the lists onto the webpage
-fillPage(pike);
-fillPage(seaTac);
-fillPage(seaCent);
-fillPage(capHill);
-fillPage(alki);
+  var dataEl = document.createElement('td');
+  dataEl.textContent = hourlyTotals.reduce(function(a,b) {
+    return a + b;
+  }, 0);
+  rowEl.appendChild(dataEl);
+  tableEl.appendChild(rowEl);
+}
