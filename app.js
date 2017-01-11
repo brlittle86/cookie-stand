@@ -53,13 +53,13 @@ var totals = [pike.salesHourly(), seaTac.salesHourly(), seaCent.salesHourly(), c
 console.log(totals);
 
 //variable containing store names for table
-var storeNames = [pike.locName, seaTac.locName, seaCent.locName, capHill.locName, alki.locName]
+var storeNames = [pike.locName, seaTac.locName, seaCent.locName, capHill.locName, alki.locName];
 
 //List cookie sales on webpage as a table
 var tableEl = document.getElementById('sales-table');
 
 //add blank tile to the upperleft corner of the table
-var nameEl = document.createElement('th')
+var nameEl = document.createElement('th');
 tableEl.appendChild(nameEl);
 
 //generate headers for the table
