@@ -1,28 +1,36 @@
 header {
-    background-image: url("assets/salmon.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 35%;
-    text-align: center;
-    margin: auto;
-    padding: 5%;
+  background-image: url("assets/salmon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35%;
+  text-align: center;
+  margin: auto;
+  padding: 5%;
 }
 
 body {
-    background-color: #A3320B;
+  background-color: #A3320B;
 }
 
 .highlight {
-    font-family: 'Indie Flower', cursive;
-    color: #D5E68D;
+  font-family: 'Indie Flower', cursive;
+  color: #D5E68D;
 }
 
-.data {
-    font: Verdana;
-    color: #6B0504;
+table, th, td {
+  background-color: #D5E68D;
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+  font: Verdana;
+  color: #6B0504;
+}
+
+table {
+  width: 100%;
 }
 
 .text {
-    font: Georgia;
-    color: #241023;
+  font: Georgia;
+  color: #241023;
 }
