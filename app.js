@@ -52,8 +52,15 @@ var alki = new Store('Alki', 'alki', 2, 16, 4.6);
 var totals = [pike.salesHourly(), seaTac.salesHourly(), seaCent.salesHourly(), capHill.salesHourly(), alki.salesHourly()];
 console.log(totals);
 
+//variable containing store names for table
+var storeNames = [pike.locName, seaTac.locName, seaCent.locName, capHill.locName, alki.locName]
+
 //List cookie sales on webpage as a table
 var tableEl = document.getElementById('sales-table');
+
+//add blank tile to the upperleft corner of the table
+var nameEl = document.createElement('th')
+tableEl.appendChild(nameEl);
 
 //generate headers for the table
 for (var i = 0; i < 15; i++) {
@@ -67,6 +74,8 @@ for(var i = 0; i < totals.length; i++) {
   var rowData = totals[i];
 
   var rowEl = document.createElement('tr');
+  rowEl.textContent = storeNames[i];
+  tableEl.appendChild(rowEl);
 
   for(var j = 0; j < rowData.length; j++) {
     var content = rowData[j];
@@ -87,6 +96,7 @@ for(var i = 0; i < totals.length; i++) {
 //prints footers with hourly totals and grand totals
 for (var i = 0; i < 1; i++) {
   var rowEl = document.createElement('tr');
+  rowEl.textContent = 'Totals';
   var hourlyTotals = [];
   for (var j = 0; j < totals[i].length; j++) {
     var dataEl = document.createElement('td');
