@@ -1,5 +1,8 @@
 'use strict';
+
+var storeHours = [,'6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', 'Total'];
 var erray = [];
+
 //Constructor for the Store objects
 function Store(locName, storeId, minCus, maxCus, avgSale) {
   this.locName = locName;
@@ -40,18 +43,41 @@ Store.prototype.dailyTotal = function() {
     return a + b;
   }, 0);
 };
+
+//method renders store objects into the table
+Store.prototype.render = function() {
+  this.salesHourly();
+  this.dailyTotal();
+
+  var tableEl = document.getElementById('sales-table');
+
+  for(var i = 0; i < 1; i++){
+    var rowData = this.storeName;
+
+    var rowEl = document.createElement('tr');
+    rowEl.textContent = rowData;
+
+    tableEl.appendChild(rowEl);
+    for(var j = 0; j < this.results.length; j++){
+      var content = this.results[j];
+
+      var dataEl = document.createElement('td');
+      dataEl.textContent = content;
+      rowEl.appendChild(dataEl);
+    }
+  }
+  tableEl.appendChild(rowEl);
+};
+
 //Add event listener for forms submission
 var formEl = document.getElementById('sales-form');
 
 formEl.addEventListener('submit', function(event){
   event.preventDefault();
   event.stopPropagation();
-  erray.push(new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value));
- //event.target.storeId.value;
+  erray.push(new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value).render());
 }, false);
 //Create Store objects for each store
-
-// var storeObjects = [Store('1st and Pike', 'first-pike', 23, 65, 6.3), Store('SeaTac Airport', 'airport', 3, 24, 1.2), Store('Seattle Center', 'center', 11, 38, 3.7), Store('Capitol Hill', 'hill', 20, 38, 2.3)];
 
 var pike = new Store('1st and Pike', 'first-pike', 23, 65, 6.3);
 var seaTac = new Store('SeaTac Airport', 'airport', 3, 24, 1.2);
@@ -70,19 +96,12 @@ var storeNames = [pike.locName, seaTac.locName, seaCent.locName, capHill.locName
 //List cookie sales on webpage as a table
 var tableEl = document.getElementById('sales-table');
 
-//add blank tile to the upperleft corner of the table
-var nameEl = document.createElement('th');
-tableEl.appendChild(nameEl);
-
 //generate headers for the table
-for (var i = 0; i < 15; i++) {
+for (var i = 0; i < storeHours.length; i++) {
   var times = document.createElement('th');
-  times.textContent = (i + 6) + ':00';
+  times.textContent = storeHours[i];
   tableEl.appendChild(times);
 }
-var cumulativeTotals = document.createElement('th');
-cumulativeTotals.textContent = 'Daily Totals';
-tableEl.appendChild(cumulativeTotals);
 
 //prints the hourly values and totals to a table in HTML
 for(var i = 0; i < totals.length; i++) {
