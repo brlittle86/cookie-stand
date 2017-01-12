@@ -8,26 +8,28 @@
   </head>
   <body>
     <main>
-    <table id="sales-table">
+      <table id="sales-table">
+        <thead id="times"></thead>
+        <tfoot id="totals"></tfoot>
       </table>
-        <section id="form-section">
-          <form id="sales-form">
-            <fieldset>
-              <legend>New Store Data</legend>
-              <label for="locName">Name:</label>
-              <input name="locName" id="name-input" type="text" required="required" />
-              <label for="storeId">ID:</label>
-              <input name="storeId" id="id-input" type="text" required="required" />
-              <label for="minCus">Minimum Customer:</label>
-              <input name="minCus" id="min-input" type="number" required="required" />
-              <label for="maxCus">Maximum Cutomer:</label>
-              <input name="maxCus" id="max-input" type="number" required="required" />
-              <label for="avgSale">Average Sale</label>
-              <input name="avgSale" id="avg-input" type="decimal" required="required" />
-              <button type="submit" id="submit-button">SUBMIT</button>
-            </fieldset>
-          </form>
-        </section>
+      <section id="form-section">
+        <form id="sales-form">
+          <fieldset>
+            <legend>New Store Data</legend>
+            <label for="locName">Name:</label>
+            <input name="locName" id="name-input" type="text" required="required" />
+            <label for="storeId">ID:</label>
+            <input name="storeId" id="id-input" type="text" required="required" />
+            <label for="minCus">Minimum Customer:</label>
+            <input name="minCus" id="min-input" type="number" required="required" />
+            <label for="maxCus">Maximum Cutomer:</label>
+            <input name="maxCus" id="max-input" type="number" required="required" />
+            <label for="avgSale">Average Sale</label>
+            <input name="avgSale" id="avg-input" type="decimal" required="required" />
+            <button type="submit" id="submit-button">SUBMIT</button>
+          </fieldset>
+        </form>
+      </section>
      </main>
   <script src="app.js"></script>
 </body>
