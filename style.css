@@ -1,38 +1,135 @@
+body {
+  width: 960px;
+  margin: auto;
+  text-align: center;
+}
+
 header {
   background-image: url("assets/salmon.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 35%;
+  background-size: 40%;
   text-align: center;
   margin: auto;
   padding: 5%;
 }
 
-body {
-  background-color: #A3320B;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #109648;
+    position: fixed;
+    top: 0px;
+    width: 860px;
 }
 
-.highlight {
+li {
+  float: left;
+}
+
+li a {
+    display: block;
+    color: #F7F0F0;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #18A999;
+}
+
+li {
+    border-right: 1px solid #bbb;
+}
+
+body {
+  background-color: #F7F0F0;
+}
+
+main {
+  margin-top: 15px;
+}
+
+div {
+  float: left;
+  margin: auto 10px;
+}
+
+h1 {
   font-family: 'Indie Flower', cursive;
-  color: #D5E68D;
+  color: #109648;
+  padding-top: 0px;
+  padding-bottom: 75px;
+  margin-top: 5px;
 }
 
 table, th, td, tr {
-  background-color: #D5E68D;
+  background-color: #F7F0F0;
   border: 1px solid black;
   border-collapse: collapse;
   font: Verdana;
   color: #6B0504;
 }
 
-table {
-  width: 60%;
+section {
+  margin: auto 10px;
 }
 
-tr:hover {background-color: #f5f5f5}
-td:hover {background-color: #f5f5f5}
+table {
+  width: 80%;
+  margin: auto;
+}
+
+tr:hover {background-color: #109648}
+td:hover {background-color: #109648}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  left: 610px;
+  right: 610px;
+  margin: auto;
+}
+
+h2, h3 {
+  background-color: #18A999;
+  clear: both;
+  width: 300px;
+  border-radius: 5px;
+}
+
+h2 {
+  float: left;
+  clear: right;
+}
+
+p {
+  background-color: #8AF3FF;
+  float: left;
+  clear: both;
+  width: 230px;
+  margin: auto 35px;
+  border-radius: 5px;
+}
+
+fieldset {
+  width: 80%;
+  margin: auto;
+}
 
 .text {
   font: Georgia;
-  color: #241023;
+  color: #484349;
+}
+
+.highlight {
+  font-family: 'Permanent Marker', cursive;
+  float: right;
+  margin: 10px;
+  clear: both;
+  border: 2px dotted #484349;
+  padding: 4px;
 }
