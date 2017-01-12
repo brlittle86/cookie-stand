@@ -48,7 +48,6 @@ Store.prototype.dailyTotal = function() {
 Store.prototype.render = function() {
   this.salesHourly();
 
-
   var tableEl = document.getElementById('sales-table');
 
   for(var i = 0; i < 1; i++){
@@ -80,8 +79,8 @@ formEl.addEventListener('submit', function(event){
   event.stopPropagation();
   erray.push(new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value).render());
 }, false);
-//Create Store objects for each store
 
+//Create Store objects for each store
 var pike = new Store('1st and Pike', 'first-pike', 23, 65, 6.3);
 pike.render();
 var seaTac = new Store('SeaTac Airport', 'airport', 3, 24, 1.2);
@@ -134,6 +133,6 @@ var footer = function() {
     return a + b;
   }, 0);
   tableEl.appendChild(footTotal);
-}
+};
 
 // footer();
