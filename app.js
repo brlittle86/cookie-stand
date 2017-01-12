@@ -111,21 +111,29 @@ var header = function() {
 
 header();
 
-//prints footers with hourly totals and grand totals
-// for (var i = 0; i < 1; i++) {
-//   var rowEl = document.createElement('tr');
-//   rowEl.textContent = 'Totals';
-//   var hourlyTotals = [];
-//   for (var j = 0; j < totals[i].length; j++) {
-//     var dataEl = document.createElement('td');
-//     hourlyTotals.push(totals[0][j] + totals[1][j] + totals[2][j] + totals[3][j] + totals[4][j]);
-//     dataEl.textContent = hourlyTotals[j];
-//     rowEl.appendChild(dataEl);
-//   }
-//   var dataEl = document.createElement('td');
-//   dataEl.textContent = hourlyTotals.reduce(function(a,b) {
-//     return a + b;
-//   }, 0);
-//   rowEl.appendChild(dataEl);
-//   tableEl.appendChild(rowEl);
-// }
+var footer = function() {
+  var tableEl = document.getElementById('totals');
+  var footTotal = document.createElement('tr');
+  footTotal.textContent = 'Totals';
+  tableEl.appendChild(footTotal);
+  var hourlyTotals = [];
+  for (var j = 0; j < erray[j].dailyTotals.length; j++) {
+    var dataEl = document.createElement('td');
+    for (var i = 0; i < erray.length; i++) {
+      hourlyTotals.push(erray[j].dailyTotals[i]);
+      console.log('nerds' + hourlyTotals);
+    }
+
+    // hourlyTotals.push();
+    dataEl.textContent = hourlyTotals;
+    console.log('haters' + dataEl.textContent);
+    footTotal.appendChild(dataEl);
+  }
+  var dataEl = document.createElement('td');
+  dataEl.textContent = hourlyTotals.reduce(function(a,b) {
+    return a + b;
+  }, 0);
+  tableEl.appendChild(footTotal);
+}
+
+// footer();
