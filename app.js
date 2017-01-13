@@ -1,7 +1,7 @@
 'use strict';
 
 var storeHours = ['Location','6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', 'Total'];
-var erray = [];
+var storesObjects = [];
 
 //Constructor for the Store objects
 function Store(locName, storeId, minCus, maxCus, avgSale) {
@@ -79,8 +79,8 @@ formEl.addEventListener('submit', function(event){
   event.stopPropagation();
   var newStore = new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value);
   newStore.render();
-  erray.push(newStore);
-  // erray.push(new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value).render());
+  storesObjects.push(newStore);
+  // storesObjects.push(new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value).render());
   footer();
 }, false);
 
@@ -95,8 +95,8 @@ var capHill = new Store('Capitol Hill', 'hill', 20, 38, 2.3);
 capHill.render();
 var alki = new Store('Alki', 'alki', 2, 16, 4.6);
 alki.render();
-erray.push(pike, seaTac, seaCent, capHill, alki);
-console.log('erray', erray);
+storesObjects.push(pike, seaTac, seaCent, capHill, alki);
+console.log('storesObjects', storesObjects);
 
 //List cookie sales on webpage as a table
 var tableEl = document.getElementById('sales-table');
@@ -114,18 +114,29 @@ var header = function() {
 
 header();
 
-var tableEl = document.getElementById('totals');
-var footTotal = document.createElement('tr');
-footTotal.textContent = 'Totals';
-tableEl.appendChild(footTotal);
+var removeExistingFooter = function() {
+  var footTotal = document.getElementById('totalsRow');
+  if (footTotal !== null) {
+    footTotal.parentElement.removeChild(footTotal);
+  }
+};
+
 var footer = function() {
+  removeExistingFooter();
+
+  var tableEl = document.getElementById('totals');
+  var footTotal = document.createElement('tr');
+
+  footTotal.setAttribute('id', 'totalsRow');
+  footTotal.textContent = 'Totals';
+  tableEl.appendChild(footTotal);
   var hourlyTotals = [];
-  console.log('erray is ' + erray);
+  console.log('storesObjects is ' + storesObjects);
   for (var j = 0; j < 15; j++) {
     var sum = 0;
     var dataEl = document.createElement('td');
-    for (var i = 0; i < erray.length; i++) {
-      sum += erray[i].dailyTotals[j];
+    for (var i = 0; i < storesObjects.length; i++) {
+      sum += storesObjects[i].dailyTotals[j];
     }
     hourlyTotals.push(sum);
     console.log(hourlyTotals);
