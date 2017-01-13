@@ -77,7 +77,10 @@ var formEl = document.getElementById('sales-form');
 formEl.addEventListener('submit', function(event){
   event.preventDefault();
   event.stopPropagation();
-  erray.push(new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value).render());
+  var newStore = new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value);
+  newStore.render();
+  erray.push(newStore);
+  // erray.push(new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value).render());
   footer();
 }, false);
 
