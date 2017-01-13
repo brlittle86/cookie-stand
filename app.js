@@ -78,6 +78,7 @@ formEl.addEventListener('submit', function(event){
   event.preventDefault();
   event.stopPropagation();
   erray.push(new Store(event.target.locName.value, event.target.storeId.value, event.target.minCus.value, event.target.maxCus.value, event.target.avgSale.value).render());
+  footer();
 }, false);
 
 //Create Store objects for each store
@@ -110,31 +111,31 @@ var header = function() {
 
 header();
 
+var tableEl = document.getElementById('totals');
+var footTotal = document.createElement('tr');
+footTotal.textContent = 'Totals';
+tableEl.appendChild(footTotal);
 var footer = function() {
-  var tableEl = document.getElementById('totals');
-  var footTotal = document.createElement('tr');
-  footTotal.textContent = 'Totals';
-  tableEl.appendChild(footTotal);
   var hourlyTotals = [];
-  console.log(erray);
-  for (var j = 0; j < erray[j][j].length; j++) {
-    console.dir(erray[j].dailyTotals);
+  console.log('erray is ' + erray);
+  for (var j = 0; j < 15; j++) {
+    var sum = 0;
     var dataEl = document.createElement('td');
     for (var i = 0; i < erray.length; i++) {
-      hourlyTotals.push(erray[j].dailyTotals[i]);
-      console.log('nerds' + hourlyTotals);
+      sum += erray[i].dailyTotals[j];
     }
+    hourlyTotals.push(sum);
+    console.log(hourlyTotals);
 
-    // hourlyTotals.push();
-    dataEl.textContent = hourlyTotals;
-    console.log('haters' + dataEl.textContent);
+    dataEl.textContent = hourlyTotals[j];
     footTotal.appendChild(dataEl);
   }
   var dataEl = document.createElement('td');
   dataEl.textContent = hourlyTotals.reduce(function(a,b) {
     return a + b;
   }, 0);
+  footTotal.appendChild(dataEl);
   tableEl.appendChild(footTotal);
 };
 
-// footer();
+footer();
