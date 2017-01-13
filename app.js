@@ -116,7 +116,9 @@ var footer = function() {
   footTotal.textContent = 'Totals';
   tableEl.appendChild(footTotal);
   var hourlyTotals = [];
-  for (var j = 0; j < erray[j].dailyTotals.length; j++) {
+  console.log(erray);
+  for (var j = 0; j < erray[j][j].length; j++) {
+    console.dir(erray[j].dailyTotals);
     var dataEl = document.createElement('td');
     for (var i = 0; i < erray.length; i++) {
       hourlyTotals.push(erray[j].dailyTotals[i]);
