@@ -14,7 +14,7 @@ function Store(locName, storeId, minCus, maxCus, avgSale) {
 
   var dailyTotals = [];
   this.dailyTotals = dailyTotals;
-};
+}
 
 //Generate random number of customers based on minimum and maximum numbers
 Store.prototype.cusPerHour = function() {
@@ -65,7 +65,7 @@ Store.prototype.render = function() {
       dataEl.textContent = content;
       rowEl.appendChild(dataEl);
     }
-    var dataEl = document.createElement('td');
+    dataEl = document.createElement('td');
     dataEl.textContent = this.dailyTotal();
     rowEl.appendChild(dataEl);
   }
@@ -109,13 +109,12 @@ storesObjects.push(pike, seaTac, seaCent, capHill, alki);
 console.log('storesObjects', storesObjects);
 
 //List cookie sales on webpage as a table
-var tableEl = document.getElementById('sales-table');
+//var tableEl = document.getElementById('sales-table');
 
 //generate headers for the table
 var header = function() {
   for (var i = 0; i < storeHours.length; i++) {
-    var hours = storeHours[i]
-    ;
+    var hours = storeHours[i];
     var headEl = document.getElementById('times');
     var data = document.createElement('th');
 
@@ -165,7 +164,7 @@ var footer = function() {
   }
 
   //totals the entire row into a new cell at the end for a grand total for the day
-  var dataEl = document.createElement('td');
+  dataEl = document.createElement('td');
   dataEl.textContent = hourlyTotals.reduce(function(a,b) {
     return a + b;
   }, 0);
